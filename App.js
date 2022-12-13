@@ -1,20 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import Onboarding_one from './screens/onboarding_one';
+import { useFonts } from "expo-font";
 
 export default function App() {
+  const [loaded] = useFonts({
+      Montserrat: require('./assets/fonts/Nunito-Regular.ttf'),
+  });
+
+  if(!loaded){
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Onboarding_one />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
