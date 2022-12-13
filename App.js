@@ -3,7 +3,7 @@ import { useFonts } from "expo-font";
 
 export default function App() {
   const [loaded] = useFonts({
-      Montserrat: require('./assets/fonts/Nunito-Regular.ttf'),
+      Nunito: require('./assets/fonts/Nunito-Regular.ttf'),
   });
 
   if(!loaded){

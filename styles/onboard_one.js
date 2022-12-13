@@ -16,7 +16,7 @@ const Onboard_one = StyleSheet.create({
     topText: {
         fontSize: 25,
         color: '#1E0C4A',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Nunito',
     },
     imageArea: {
         backgroundColor: '#cccccc',
