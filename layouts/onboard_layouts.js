@@ -2,20 +2,20 @@ import { View, Text, ScrollView, Image, TouchableWithoutFeedback } from "react-n
 import { StatusBar } from "expo-status-bar";
 import Onboard_one from "../styles/onboard_one";
 
-export default function Onboard_Layout({ section, actionFunc }){
+export default function Onboard_Layout({ section, actionFunc, moveToLogin, moveToSignup }) {
     const displayImg = require('../assets/images/onboardone_image.png');
     const displayImg2 = require('../assets/images/onboardtwo_image.png');
 
     const continueAndSignup = () => {
-        if(section == "one"){
+        if (section == "one") {
             actionFunc();
         }
-        else{
-            console.log('Other Function');
+        else {
+            moveToSignup();
         }
     }
 
-    return(
+    return (
         <View style={Onboard_one.container}>
             <StatusBar style="dark" translucent={false} backgroundColor="transparent" />
             <ScrollView>
@@ -25,18 +25,27 @@ export default function Onboard_Layout({ section, actionFunc }){
                     </Text>
                 </View>
                 <View style={Onboard_one.imageArea}>
-                    <Image source={(section=="two")?displayImg2:displayImg} style={Onboard_one.image} />
+                    <Image source={(section == "two") ? displayImg2 : displayImg} style={Onboard_one.image} />
                     <Text style={Onboard_one.lowerText}>
-                        {(section=='two')?'Fast Delivery':'Tasty Food At Your Finger Tips'}
+                        {(section == 'two') ? 'Fast Delivery' : 'Tasty Food At Your Finger Tips'}
                     </Text>
                 </View>
+
                 <View style={Onboard_one.buttonsView}>
+                    <View style={Onboard_one.activeIndicator}>
+                        <View style={(section=='one')?Onboard_one.activePage:Onboard_one.inactivePage}>
+
+                        </View>
+                        <View style={(section=='two')?Onboard_one.activePage:Onboard_one.inactivePage}>
+
+                        </View>
+                    </View>
                     <TouchableWithoutFeedback onPress={continueAndSignup}>
                         <Text style={Onboard_one.buttonContinue}>
-                            {(section=="one")?'Continue':'Get Started'}
+                            {(section == "one") ? 'Continue' : 'Get Started'}
                         </Text>
                     </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={() => { moveToLogin() }}>
                         <Text style={Onboard_one.buttonSignin}>
                             Sign In
                         </Text>

@@ -5,6 +5,7 @@ const Onboard_one = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 10,
+        backgroundColor: '#ffffff',
     },
     topName: {
         display: 'flex',
@@ -69,6 +70,25 @@ const Onboard_one = StyleSheet.create({
         fontFamily: 'Nunito',
         color: '#1E0C4A',
         borderWidth: 2,
+    },
+    activeIndicator: {
+        display: 'flex',
+        flexDirection: 'row',
+        width: 40,
+        justifyContent: 'space-around',
+        backgroundColor: 'transparent',
+        padding: 5,
+        marginBottom: 10,
+    },
+    activePage: {
+        backgroundColor: '#FDC500',
+        borderRadius: 100,
+        padding: 4,
+    },
+    inactivePage: {
+        backgroundColor: '#D9D8D8',
+        borderRadius: 100,
+        padding: 4,
     },
 });
 
