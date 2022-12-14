@@ -2,9 +2,18 @@ import { View, Text, ScrollView, Image, TouchableWithoutFeedback } from "react-n
 import { StatusBar } from "expo-status-bar";
 import Onboard_one from "../styles/onboard_one";
 
-export default function Onboard_Layout({section}){
+export default function Onboard_Layout({ section, actionFunc }){
     const displayImg = require('../assets/images/onboardone_image.png');
     const displayImg2 = require('../assets/images/onboardtwo_image.png');
+
+    const continueAndSignup = () => {
+        if(section == "one"){
+            actionFunc();
+        }
+        else{
+            console.log('Other Function');
+        }
+    }
 
     return(
         <View style={Onboard_one.container}>
@@ -22,9 +31,9 @@ export default function Onboard_Layout({section}){
                     </Text>
                 </View>
                 <View style={Onboard_one.buttonsView}>
-                    <TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={continueAndSignup}>
                         <Text style={Onboard_one.buttonContinue}>
-                            {(section=="one")?'Continue':'Sign up'}
+                            {(section=="one")?'Continue':'Get Started'}
                         </Text>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback>
