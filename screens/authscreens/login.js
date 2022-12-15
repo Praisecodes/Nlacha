@@ -1,11 +1,16 @@
-import { View, Text } from "react-native"
+import { Text } from "react-native"
+import AuthLayout from "../../layouts/authLayout"
 
-export default function Login(){
+export default function Login({navigation}){
+    const switchToSignup = () => {
+        navigation.navigate('Signup');
+    }
+
     return (
-        <View>
+        <AuthLayout page={'Login'} switchToSignup={switchToSignup}>
             <Text>
                 This is the login screen
             </Text>
-        </View>
+        </AuthLayout>
     )
 }
