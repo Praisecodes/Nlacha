@@ -13,15 +13,15 @@ const AuthStyle = StyleSheet.create({
         width: wp('100%'),
         justifyContent: 'space-between',
         flexDirection: 'row',
-        paddingHorizontal: 20,
+        paddingHorizontal: wp('2%'),
     },
     topTexts: {
         color: '#1E0C4A',
         backgroundColor: 'transparent',
         fontFamily: 'Nunito_bold',
-        fontSize: 25,
-        width: wp('35%'),
-        paddingHorizontal: 25,
+        fontSize: 20,
+        width: wp('40%'),
+        paddingHorizontal: 20,
         paddingVertical: 2,
     },
     toTheRight: {
@@ -37,14 +37,14 @@ const AuthStyle = StyleSheet.create({
     },
     welcomeBack: {
         width: wp('100%'),
-        paddingHorizontal: 20,
+        paddingHorizontal: wp('2%'),
         paddingVertical: 15,
         fontFamily: 'Nunito',
         fontSize: 15,
     },
     mainContent: {
-        paddingHorizontal: 20,
-        paddingVertical: 40,
+        paddingHorizontal: wp('2%'),
+        paddingVertical: 35,
         backgroundColor: '#cccccc',
         width: wp('100%'),
     },
@@ -58,13 +58,37 @@ const AuthStyle = StyleSheet.create({
     },
     button: {
         backgroundColor: '#FDC500',
-        paddingVertical: 13,
+        paddingVertical: 10,
         fontFamily: 'Nunito_bold',
         fontSize: 22,
         width: wp('80%'),
         borderRadius: 100,
         textAlign: 'center',
         color: '#1E0C4A'
+    },
+    otherOptions: {
+        paddingVertical: 10,
+        width: wp('100%'),
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    texts: {
+        color: '#1E0C4A',
+        fontFamily: 'Nunito',
+        paddingVertical: 3,
+        fontSize: 16,
+    }, 
+    imageView: {
+        display: 'flex',
+        flexDirection: 'row',
+        width: wp('25%'),
+        justifyContent: 'space-around',
+        paddingVertical: 5,
+    },
+    image: {
+        width: 25,
+        height: 25,
     },
 });
 
