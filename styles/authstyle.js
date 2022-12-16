@@ -7,6 +7,7 @@ const AuthStyle = StyleSheet.create({
         backgroundColor: '#ffffff',
         justifyContent: 'center',
         alignItems: 'center',
+        height: hp('100%'),
     },
     topButtons: {
         display: 'flex',
@@ -43,9 +44,8 @@ const AuthStyle = StyleSheet.create({
         fontSize: 15,
     },
     mainContent: {
-        paddingHorizontal: wp('2%'),
-        paddingVertical: 35,
-        backgroundColor: '#cccccc',
+        paddingVertical: 30,
+        backgroundColor: '#ffffff',
         width: wp('100%'),
     },
     buttonContainer: {
@@ -53,14 +53,14 @@ const AuthStyle = StyleSheet.create({
         justifyContent: "center",
         alignItems: 'center',
         paddingHorizontal: 10,
-        paddingVertical: 60,
+        paddingVertical: 30,
         width: wp('100%'),
     },
     button: {
         backgroundColor: '#FDC500',
-        paddingVertical: 10,
+        paddingVertical: 8,
         fontFamily: 'Nunito_bold',
-        fontSize: 22,
+        fontSize: 17,
         width: wp('80%'),
         borderRadius: 100,
         textAlign: 'center',
@@ -77,7 +77,7 @@ const AuthStyle = StyleSheet.create({
         color: '#1E0C4A',
         fontFamily: 'Nunito',
         paddingVertical: 3,
-        fontSize: 16,
+        fontSize: 14,
     }, 
     imageView: {
         display: 'flex',

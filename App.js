@@ -1,13 +1,11 @@
-import Onboarding from './screens/onboarding';
 import { useFonts } from "expo-font";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Login from './screens/authscreens/login';
-import Signup from './screens/authscreens/signup';
-
-const Stack = createNativeStackNavigator();
+import OnboardNav from './navigators/onboard_nav';
+import AuthNav from "./navigators/auth_nav";
+import { useState } from "react";
 
 export default function App() {
+  const [switchNavs, setSwitchNavs] = useState(false);
+
   const [loaded] = useFonts({
       Nunito: require('./assets/fonts/Nunito-Regular.ttf'),
       Nunito_bold: require('./assets/fonts/Nunito-Bold.ttf'),
@@ -17,13 +15,11 @@ export default function App() {
     return null;
   }
 
+  const SwitchNavs = () => {
+    setSwitchNavs(!switchNavs);
+  }
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name='Onboarding' component={Onboarding} />
-        <Stack.Screen name='Login' component={Login} />
-        <Stack.Screen name='Signup' component={Signup} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    ((switchNavs)?<AuthNav />:<OnboardNav switchNavs={SwitchNavs} />)
   );
 }

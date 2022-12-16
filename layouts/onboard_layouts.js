@@ -2,7 +2,7 @@ import { View, Text, ScrollView, Image, TouchableWithoutFeedback } from "react-n
 import { StatusBar } from "expo-status-bar";
 import Onboard_one from "../styles/onboard_one";
 
-export default function Onboard_Layout({ section, actionFunc, moveToLogin, moveToSignup }) {
+export default function Onboard_Layout({ section, actionFunc, switchNavs }) {
     const displayImg = require('../assets/images/onboardone_image.png');
     const displayImg2 = require('../assets/images/onboardtwo_image.png');
 
@@ -11,7 +11,7 @@ export default function Onboard_Layout({ section, actionFunc, moveToLogin, moveT
             actionFunc();
         }
         else {
-            moveToSignup();
+            switchNavs();
         }
     }
 
@@ -45,7 +45,7 @@ export default function Onboard_Layout({ section, actionFunc, moveToLogin, moveT
                             {(section == "one") ? 'Continue' : 'Get Started'}
                         </Text>
                     </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={() => { moveToLogin() }}>
+                    <TouchableWithoutFeedback onPress={() => { }}>
                         <Text style={Onboard_one.buttonSignin}>
                             Sign In
                         </Text>

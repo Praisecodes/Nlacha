@@ -1,7 +1,7 @@
 import Onboard_Layout from "../../layouts/onboard_layouts";
 
-export default function Onboarding_two({actionFunc, moveToLogin, moveToSignup}){
+export default function Onboarding_two({switchNavs}){
     return (
-        <Onboard_Layout section={'two'} actionFunc={actionFunc} moveToLogin={moveToLogin} moveToSignup={moveToSignup} />
+        <Onboard_Layout section={'two'} switchNavs={switchNavs} />
     )
 }
