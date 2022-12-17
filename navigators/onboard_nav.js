@@ -1,19 +1,19 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Onboarding_one from "../screens/onboarding/onboarding_one";
 import Onboarding_two from "../screens/onboarding/onboarding_two";
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function OnboardNav({switchNavs}){
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{headerShown: false}}>
-                <Stack.Screen name="Onboarding_one" component={Onboarding_one} />
-                <Stack.Screen name="Onboarding_two">
+            <Tab.Navigator screenOptions={{headerShown: false,tabBarStyle: {display: 'none'}}}>
+                <Tab.Screen name="Onboarding_one" component={Onboarding_one} />
+                <Tab.Screen name="Onboarding_two">
                     {(props)=><Onboarding_two {...props} switchNavs={switchNavs} />}
-                </Stack.Screen>
-            </Stack.Navigator>
+                </Tab.Screen>
+            </Tab.Navigator>
         </NavigationContainer>
     )
 }
