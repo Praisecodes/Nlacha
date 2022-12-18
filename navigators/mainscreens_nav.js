@@ -1,38 +1,56 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { Homepage, Menupage, FavouritePage } from "../screens/mainscreens";
-import {Feather, MaterialIcons} from '@expo/vector-icons';
+import { Homepage, Menupage, FavouritePage, Cart, Profile } from "../screens/mainscreens";
+import { Feather, MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
-export default function MainscreensNav(){
+export default function MainscreensNav() {
     return (
         <NavigationContainer>
-            <Tab.Navigator screenOptions={{tabBarLabelStyle: {fontFamily: 'Nunito_bold'}}}>
-                <Tab.Screen 
-                    name="Home" 
-                    component={Homepage} 
+            <Tab.Navigator screenOptions={{ tabBarHideOnKeyboard: true, tabBarShowLabel: false}}>
+                <Tab.Screen
+                    name="Home"
+                    component={Homepage}
                     options={{
                         headerShown: false,
-                        tabBarIcon: ()=>(<Feather name="home" size={24} color='#000000' />),
+                        tabBarIcon: ({ focused }) => (<Feather name="home" size={24} color={(focused) ? '#1E0C4A' : '#000000'} />),
                     }}
                 />
 
-                <Tab.Screen 
-                    name="Menu" 
-                    component={Menupage} 
+                <Tab.Screen
+                    name="Menu"
+                    component={Menupage}
                     options={{
                         headerShown: false,
-                        tabBarIcon: ()=>(<MaterialIcons name="menu-book" size={24} color="#000000" />)
-                    }} 
+                        tabBarIcon: ({ focused }) => (<MaterialIcons name="menu-book" size={24} color={(focused) ? '#1E0C4A' : '#000000'} />)
+                    }}
                 />
-                <Tab.Screen 
-                    name="Favourites" 
-                    component={FavouritePage} 
+                <Tab.Screen
+                    name="Favourites"
+                    component={FavouritePage}
                     options={{
                         headerShown: false,
-                        tabBarIcon: ()=>(<MaterialIcons name="favorite-outline" size={24} color="#000000" />)
-                    }} 
+                        tabBarIcon: ({ focused }) => (<MaterialIcons name={(focused) ? 'favorite' : "favorite-outline"} size={24} color={(focused) ? '#1E0C4A' : '#000000'} />)
+                    }}
+                />
+
+                <Tab.Screen
+                    name="Cart"
+                    component={Cart}
+                    options={{
+                        headerShown: false,
+                        tabBarIcon: ({ focused }) => (<Feather name='shopping-cart' size={24} color={(focused) ? '#1E0C4A' : '#000000'} />)
+                    }}
+                />
+
+                <Tab.Screen
+                    name="Profile"
+                    component={Profile}
+                    options={{
+                        headerShown: false,
+                        tabBarIcon: ({ focused }) => (<FontAwesome5 name='user-circle' size={24} color={(focused) ? '#1E0C4A' : '#000000'} />)
+                    }}
                 />
             </Tab.Navigator>
         </NavigationContainer>
