@@ -30,8 +30,8 @@ const Onboard_one = StyleSheet.create({
     image: {
         borderRadius: 230,
         resizeMode: 'contain',
-        width: wp('80%'),
-        height: hp('39%'),
+        width: wp('69%'),
+        height: hp('34%'),
         marginBottom: 4,
     },
     lowerText: {

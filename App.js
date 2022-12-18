@@ -1,6 +1,7 @@
 import { useFonts } from "expo-font";
 import OnboardNav from './navigators/onboard_nav';
-import AuthNav from "./navigators/auth_nav";
+// import AuthNav from "./navigators/auth_nav";
+import Auth_Main from "./navigators/auth_main";
 import { useState } from "react";
 
 export default function App() {
@@ -20,6 +21,6 @@ export default function App() {
   }
 
   return (
-    ((switchNavs)?<AuthNav />:<OnboardNav switchNavs={SwitchNavs} />)
+    ((switchNavs)?<Auth_Main />:<OnboardNav switchNavs={SwitchNavs} />)
   );
 }

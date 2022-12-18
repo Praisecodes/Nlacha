@@ -1,10 +1,20 @@
 import { View, Text, TouchableWithoutFeedback, Image, ScrollView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import AuthStyle from "../styles/authstyle";
+import { useState } from "react";
 
-export default function AuthLayout({ children, page, switchToLogin, switchToSignup }) {
+export default function AuthLayout({ children, page, switchToLogin, switchToSignup, handleLogin, changeFocus }) {
     const Google = require('../assets/images/google.png');
     const Facebook = require('../assets/images/facebook.png');
+
+    const [correctDetails] = useState({
+        username: 'user',
+        password: 'userpassword',
+    });
+
+    const Login = () => {
+        ((handleLogin(correctDetails.password, correctDetails.username))?changeFocus():alert('Invalid Login'));
+    }
 
     return (
         <ScrollView>
@@ -33,8 +43,12 @@ export default function AuthLayout({ children, page, switchToLogin, switchToSign
                     {children}
                 </View>
                 <View style={AuthStyle.buttonContainer}>
-                    <TouchableWithoutFeedback onPress={() => { }}>
-                        <Text style={AuthStyle.button}>
+                    <TouchableWithoutFeedback onPress={() => {
+                        ((page=="Login")?Login():null)
+                    }}>
+                        <Text 
+                            style={AuthStyle.button}
+                        >
                             {(page == "Login") ? 'Log in' : 'Create Account'}
                         </Text>
                     </TouchableWithoutFeedback>
