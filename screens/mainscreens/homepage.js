@@ -4,8 +4,11 @@ import HomepageStyle from "../../styles/main/homepage_styles";
 import { AntDesign } from '@expo/vector-icons'
 import Products from "../../components/products";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { useState } from "react";
+import Coming_soon from "../../components/coming_soon";
 
 export default function Homepage() {
+    const [choiceCount, setChoiceCount] = useState(0);
     return (
         <View style={{ backgroundColor: '#ffffff', height: hp('100%') }}>
             <ScrollView>
@@ -34,6 +37,9 @@ export default function Homepage() {
                     <Text style={HomepageStyle.productsViewText}>
                         Popular Choices
                     </Text>
+                    <View>
+                        {(choiceCount<=0)?<Coming_soon />:''}
+                    </View>
                 </View>
             </ScrollView>
         </View>
