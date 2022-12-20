@@ -2,7 +2,7 @@ import { View, Text, ScrollView, Image, TouchableWithoutFeedback } from "react-n
 import HomepageStyle from "../styles/main/homepage_styles";
 import { useState } from "react";
 
-export default function Products() {
+export default function Products({changeCategory}) {
     const [section, setSection] = useState('food');
     const food = require('../assets/images/onboardone_image.png');
     const protein = require('../assets/images/protein.png');
@@ -12,6 +12,7 @@ export default function Products() {
 
     const changeSection = (activeSection) => {
         setSection(activeSection);
+        changeCategory(activeSection);
     }
 
     return (

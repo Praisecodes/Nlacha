@@ -1,11 +1,14 @@
 import { View, Text, TouchableWithoutFeedback, Image, ScrollView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import AuthStyle from "../styles/authstyle";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function AuthLayout({ children, page, switchToLogin, switchToSignup, handleLogin, changeFocus }) {
     const Google = require('../assets/images/google.png');
     const Facebook = require('../assets/images/facebook.png');
+
+    const [correctUsername, setCorrectUsername] = useState('');
+    const [correctPassword, setCorrectPassword] = useState('');
 
     const [correctDetails] = useState({
         username: 'user',
@@ -13,7 +16,12 @@ export default function AuthLayout({ children, page, switchToLogin, switchToSign
     });
 
     const Login = () => {
-        ((handleLogin(correctDetails.password, correctDetails.username))?changeFocus():alert('Invalid Login'));
+        if(handleLogin(correctDetails.password, correctDetails.username)){
+            changeFocus();
+        }
+        else{
+            alert('Invalid Login');
+        }
     }
 
     return (

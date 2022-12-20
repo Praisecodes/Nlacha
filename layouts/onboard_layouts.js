@@ -45,7 +45,7 @@ export default function Onboard_Layout({ section, actionFunc, switchNavs }) {
                             {(section == "one") ? 'Continue' : 'Get Started'}
                         </Text>
                     </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={() => { }}>
+                    <TouchableWithoutFeedback onPress={() => {switchNavs()}}>
                         <Text style={Onboard_one.buttonSignin}>
                             Sign In
                         </Text>

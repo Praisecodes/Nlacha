@@ -11,6 +11,8 @@ export default function Login({navigation, changeFocus}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    // const [loggedIn, setLoggedIn] = useState(false);
+
     const checkLogin = (correctPassword, correctUsername) => {
         // ((password == correctPassword && username == correctUsername)?true:false);
         if((password == correctPassword) && (username == correctUsername)){

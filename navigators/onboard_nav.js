@@ -9,7 +9,9 @@ export default function OnboardNav({switchNavs}){
     return (
         <NavigationContainer>
             <Tab.Navigator screenOptions={{headerShown: false,tabBarStyle: {display: 'none'}}}>
-                <Tab.Screen name="Onboarding_one" component={Onboarding_one} />
+                <Tab.Screen name="Onboarding_one">
+                    {(props)=><Onboarding_one {...props} switchNavs={switchNavs} />}
+                </Tab.Screen>
                 <Tab.Screen name="Onboarding_two">
                     {(props)=><Onboarding_two {...props} switchNavs={switchNavs} />}
                 </Tab.Screen>

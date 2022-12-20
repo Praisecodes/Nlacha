@@ -4,11 +4,27 @@ import HomepageStyle from "../../styles/main/homepage_styles";
 import { AntDesign } from '@expo/vector-icons'
 import Products from "../../components/products";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Coming_soon from "../../components/coming_soon";
+import MealsList from "../../components/meals_list";
 
 export default function Homepage() {
-    const [choiceCount, setChoiceCount] = useState(0);
+    const [list, setList] = useState([]);
+    const [choiceCount, setChoiceCount] = useState(list.length);
+    const [category, setCategory] = useState('food');
+
+    const changeCategory = (newCategory) => {
+        setCategory(newCategory);
+    }
+
+    // useEffect(()=>{
+    //     fetch(`${(category == 'food')?'https://api.nlacha.com':`https://api.nlacha.com/${category}`}`)
+    //     .then(res=>res.json())
+    //     .then((data)=>{
+    //         setList([...data]);
+    //     })
+    // },[category])
+
     return (
         <View style={{ backgroundColor: '#ffffff', height: hp('100%') }}>
             <ScrollView>
@@ -31,14 +47,14 @@ export default function Homepage() {
                     <Text style={HomepageStyle.productsViewText}>
                         Our Products
                     </Text>
-                    <Products />
+                    <Products changeCategory={changeCategory} />
                 </View>
                 <View style={HomepageStyle.popChoices}>
                     <Text style={HomepageStyle.productsViewText}>
                         Popular Choices
                     </Text>
                     <View>
-                        {(choiceCount<=0)?<Coming_soon />:''}
+                        {(choiceCount<=0)?<Coming_soon />:<MealsList list={list} category={category} />}
                     </View>
                 </View>
             </ScrollView>
