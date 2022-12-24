@@ -2,6 +2,7 @@ import { Text, TextInput, TouchableWithoutFeedback } from "react-native"
 import AuthLayout from "../../layouts/authLayout"
 import Forms from "../../styles/forms";
 import { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login({navigation, changeFocus}){
     const switchToSignup = () => {
@@ -11,21 +12,46 @@ export default function Login({navigation, changeFocus}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    // const [loggedIn, setLoggedIn] = useState(false);
+    const SetJWT = async (jwtToken) => {
+        await AsyncStorage.setItem('user_token', jwtToken);
+    }
 
-    const checkLogin = (correctPassword, correctUsername) => {
-        // ((password == correctPassword && username == correctUsername)?true:false);
-        if((password == correctPassword) && (username == correctUsername)){
-            return true;
-        }
-        else{
-            return false;
-        }
+    const checkLogin = () => {
+        fetch('https://nlacha.herokuapp.com/login.php',{
+            method: 'POST',
+            headers: 'Content-Type: application/json',
+            body: JSON.stringify({
+                'username': username,
+                'password': password
+            })
+        })
+        .then(res=>{
+            switch(res.status){
+                case 400:
+                    alert("Invalid Details");
+                    break;
+                case 404:
+                    alert("No User Found!");
+                    break;
+                case 500:
+                    alert("Internal Server Error!");
+                    break;
+                default:
+                    return res.json();
+            }
+        })
+        .then((data)=>{
+            if(!data) return null;
+            const jwt = data.jwt;
+            SetJWT(jwt);
+            changeFocus();
+        })
+        .catch((e)=>{console.log(e)});
     }
 
     return (
         
-        <AuthLayout page={'Login'} changeFocus={changeFocus} switchToSignup={switchToSignup} handleLogin={checkLogin}>
+        <AuthLayout page={'Login'} switchToSignup={switchToSignup} checkLogin={checkLogin}>
             <Text style={Forms.fieldsText}>
                 Username
             </Text>

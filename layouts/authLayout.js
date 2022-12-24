@@ -3,26 +3,19 @@ import { StatusBar } from "expo-status-bar";
 import AuthStyle from "../styles/authstyle";
 import { useState, useEffect } from "react";
 
-export default function AuthLayout({ children, page, switchToLogin, switchToSignup, handleLogin, changeFocus }) {
+export default function AuthLayout({ children, page, switchToLogin, switchToSignup, checkLogin }) {
     const Google = require('../assets/images/google.png');
     const Facebook = require('../assets/images/facebook.png');
 
-    const [correctUsername, setCorrectUsername] = useState('');
-    const [correctPassword, setCorrectPassword] = useState('');
-
-    const [correctDetails] = useState({
-        username: 'user',
-        password: 'userpassword',
-    });
-
-    const Login = () => {
-        if(handleLogin(correctDetails.password, correctDetails.username)){
-            changeFocus();
-        }
-        else{
-            alert('Invalid Login');
-        }
-    }
+    // const Login = () => {
+    //     if(checkLogin()){
+    //         changeFocus();
+    //     }
+    //     else{
+    //         alert('An Error has occured, try typing your details again.\nIf the problem persists, contact developer');
+    //     }
+    //     // checkLogin();
+    // }
 
     return (
         <ScrollView>
@@ -52,7 +45,7 @@ export default function AuthLayout({ children, page, switchToLogin, switchToSign
                 </View>
                 <View style={AuthStyle.buttonContainer}>
                     <TouchableWithoutFeedback onPress={() => {
-                        ((page=="Login")?Login():null)
+                        ((page=="Login")?checkLogin():null)
                     }}>
                         <Text 
                             style={AuthStyle.button}
