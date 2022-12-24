@@ -3,7 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import AuthStyle from "../styles/authstyle";
 import { useState, useEffect } from "react";
 
-export default function AuthLayout({ children, page, switchToLogin, switchToSignup, checkLogin }) {
+export default function AuthLayout({ children, page, switchToLogin, switchToSignup, checkLogin, SignupUser }) {
     const Google = require('../assets/images/google.png');
     const Facebook = require('../assets/images/facebook.png');
 
@@ -45,7 +45,7 @@ export default function AuthLayout({ children, page, switchToLogin, switchToSign
                 </View>
                 <View style={AuthStyle.buttonContainer}>
                     <TouchableWithoutFeedback onPress={() => {
-                        ((page=="Login")?checkLogin():null)
+                        ((page=="Login")?checkLogin():SignupUser())
                     }}>
                         <Text 
                             style={AuthStyle.button}
