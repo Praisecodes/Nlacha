@@ -7,6 +7,7 @@ import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { useState, useEffect } from "react";
 import Coming_soon from "../../components/coming_soon";
 import MealsList from "../../components/meals_list";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Homepage() {
     const [list, setList] = useState([]);
@@ -17,17 +18,37 @@ export default function Homepage() {
         setCategory(newCategory);
     }
 
-    // useEffect(()=>{
-    //     fetch(`${(category == 'food')?'https://api.nlacha.com':`https://api.nlacha.com/${category}`}`)
-    //     .then(res=>res.json())
-    //     .then((data)=>{
-    //         setList([...data]);
-    //     })
-    // },[category])
+    const getJwt = async () => {
+        const jwt = await AsyncStorage.getItem('user_token');
+        if(jwt !== null){
+            const val = jwt;
+            fetch(`https://nlacha.herokuapp.com/menu.php?category=${category}`,{
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${val}`
+                }
+            })
+            .then(res=>res.json())
+            .then((data)=>{
+                // console.log(data);
+                if(!data.length>0) setChoiceCount(0);
+                setList([...data]);
+                setChoiceCount(data.length);
+            })
+            .catch((e)=>{console.log(e)});
+        }
+        else{
+            return null;
+        }
+    }
+
+    useEffect(()=>{
+        getJwt();
+    }, [category]);
 
     return (
         <View style={{ backgroundColor: '#ffffff', height: hp('100%') }}>
-            <ScrollView>
+            <ScrollView contentContainerStyle={{paddingBottom: 50}}>
                 <StatusBar backgroundColor="#FDC500" style="light" translucent={false} />
                 <View style={HomepageStyle.titleView}>
                     <Text style={HomepageStyle.titleText}>
@@ -54,7 +75,7 @@ export default function Homepage() {
                         Popular Choices
                     </Text>
                     <View>
-                        {(choiceCount<=0)?<Coming_soon />:<MealsList list={list} category={category} />}
+                        {(choiceCount<=0)?<Coming_soon />:<MealsList lists={list} />}
                     </View>
                 </View>
             </ScrollView>
