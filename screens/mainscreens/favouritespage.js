@@ -8,7 +8,7 @@ export default function FavouritePage() {
     return (
         <View style={{height: heightPercentageToDP('100%'), backgroundColor: '#ffffff'}}>
             <ScrollView>
-                <StatusBar style="light" translucent={false} backgroundColor="#000000" />
+                <StatusBar style="light" translucent={false} backgroundColor="#FDC500" />
                 <Header page={'Favourites'} />
                 <View>
                     <Coming_soon />

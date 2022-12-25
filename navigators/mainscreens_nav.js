@@ -14,7 +14,7 @@ export default function MainscreensNav() {
                     component={Homepage}
                     options={{
                         headerShown: false,
-                        tabBarIcon: ({ focused }) => (<Feather name="home" size={24} color={(focused) ? '#1E0C4A' : '#000000'} />),
+                        tabBarIcon: ({ focused }) => (<Feather name="home" size={24} color={(focused) ? '#FDC500' : '#000000'} />),
                     }}
                 />
 
@@ -23,15 +23,17 @@ export default function MainscreensNav() {
                     component={Menupage}
                     options={{
                         headerShown: false,
-                        tabBarIcon: ({ focused }) => (<MaterialIcons name="menu-book" size={24} color={(focused) ? '#1E0C4A' : '#000000'} />)
+                        tabBarIcon: ({ focused }) => (<MaterialIcons name="menu-book" size={24} color={(focused) ? '#FDC500' : '#000000'} />)
                     }}
                 />
+                    {/* {(props)=><Menupage {...props} />}
+                </Tab.Screen> */}
                 <Tab.Screen
                     name="Favourites"
                     component={FavouritePage}
                     options={{
                         headerShown: false,
-                        tabBarIcon: ({ focused }) => (<MaterialIcons name={(focused) ? 'favorite' : "favorite-outline"} size={24} color={(focused) ? '#1E0C4A' : '#000000'} />)
+                        tabBarIcon: ({ focused }) => (<MaterialIcons name={(focused) ? 'favorite' : "favorite-outline"} size={24} color={(focused) ? '#FDC500' : '#000000'} />)
                     }}
                 />
 
@@ -40,7 +42,7 @@ export default function MainscreensNav() {
                     component={Cart}
                     options={{
                         headerShown: false,
-                        tabBarIcon: ({ focused }) => (<Feather name='shopping-cart' size={24} color={(focused) ? '#1E0C4A' : '#000000'} />)
+                        tabBarIcon: ({ focused }) => (<Feather name='shopping-cart' size={24} color={(focused) ? '#FDC500' : '#000000'} />)
                     }}
                 />
 
@@ -49,7 +51,7 @@ export default function MainscreensNav() {
                     component={Profile}
                     options={{
                         headerShown: false,
-                        tabBarIcon: ({ focused }) => (<FontAwesome5 name='user-circle' size={24} color={(focused) ? '#1E0C4A' : '#000000'} />)
+                        tabBarIcon: ({ focused }) => (<FontAwesome5 name='user-circle' size={24} color={(focused) ? '#FDC500' : '#000000'} />)
                     }}
                 />
             </Tab.Navigator>

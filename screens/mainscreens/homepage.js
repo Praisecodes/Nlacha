@@ -9,13 +9,25 @@ import Coming_soon from "../../components/coming_soon";
 import MealsList from "../../components/meals_list";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function Homepage() {
+export default function Homepage({navigation}) {
     const [list, setList] = useState([]);
     const [choiceCount, setChoiceCount] = useState(list.length);
     const [category, setCategory] = useState('food');
 
     const changeCategory = (newCategory) => {
         setCategory(newCategory);
+    }
+
+    const switchScreens = (list) => {
+        navigation.navigate('Menu',{
+            listItem: {
+                id: list.id,
+                meal: list.meal,
+                price: list.price,
+                image: list.image,
+                category: list.category
+            }
+        });
     }
 
     const getJwt = async () => {
@@ -75,7 +87,7 @@ export default function Homepage() {
                         Popular Choices
                     </Text>
                     <View>
-                        {(choiceCount<=0)?<Coming_soon />:<MealsList lists={list} />}
+                        {(choiceCount<=0)?<Coming_soon />:<MealsList lists={list} switchScreens={switchScreens} />}
                     </View>
                 </View>
             </ScrollView>

@@ -1,14 +1,18 @@
-import { View, Text, Image } from "react-native";
-import { useEffect, useState } from "react";
+import { View, Text, Image, TouchableWithoutFeedback } from "react-native";
+// import { useEffect, useState } from "react";
 import MealsListStyle from "../styles/main/meals_list_style";
 import { Feather } from "@expo/vector-icons";
 
-export default function MealsList({lists}) {
+export default function MealsList({lists, switchScreens}) {
     return (
         // <View>
             (lists.map((list)=>(
                 <View key={list.id} style={MealsListStyle.containerView}>
-                    <Image source={{uri: list.image}} style={MealsListStyle.MealImage} />
+                    <TouchableWithoutFeedback onPress={()=>{
+                        switchScreens(list);
+                    }}>
+                        <Image source={{uri: list.image}} style={MealsListStyle.MealImage} />
+                    </TouchableWithoutFeedback>
                     <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                         <Text
                             style={{
