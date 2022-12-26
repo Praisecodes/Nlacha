@@ -11,7 +11,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Homepage({navigation}) {
     const [list, setList] = useState([]);
-    const [choiceCount, setChoiceCount] = useState(list.length);
+    const [choiceCount, setChoiceCount] = useState(0);
     const [category, setCategory] = useState('food');
 
     const changeCategory = (newCategory) => {
@@ -42,8 +42,6 @@ export default function Homepage({navigation}) {
             })
             .then(res=>res.json())
             .then((data)=>{
-                // console.log(data);
-                if(!data.length>0) setChoiceCount(0);
                 setList([...data]);
                 setChoiceCount(data.length);
             })
