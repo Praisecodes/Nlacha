@@ -1,6 +1,6 @@
 import { Text } from "react-native";
 
-export default function Coming_soon (){
+export default function Coming_soon ({customText}){
     return(
         <Text style={{
             fontSize: 26,
@@ -9,7 +9,7 @@ export default function Coming_soon (){
             textAlign: 'center',
             fontFamily: 'Nunito_bold'
         }}>
-            Nothing To See Here!!
+            {customText}
         </Text>
     )
 }

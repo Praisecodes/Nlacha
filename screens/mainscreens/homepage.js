@@ -85,7 +85,7 @@ export default function Homepage({navigation}) {
                         Popular Choices
                     </Text>
                     <View>
-                        {(choiceCount<=0)?<Coming_soon />:<MealsList lists={list} switchScreens={switchScreens} />}
+                        {(choiceCount<=0)?<Coming_soon customText={`No ${category} available!`} />:<MealsList lists={list} switchScreens={switchScreens} />}
                     </View>
                 </View>
             </ScrollView>

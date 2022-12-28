@@ -11,7 +11,7 @@ export default function FavouritePage() {
                 <StatusBar style="light" translucent={false} backgroundColor="#FDC500" />
                 <Header page={'Favourites'} />
                 <View>
-                    <Coming_soon />
+                    <Coming_soon customText={"Nothing To See Here!!"} />
                 </View>
             </ScrollView>
         </View>

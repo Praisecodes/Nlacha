@@ -32,14 +32,14 @@ export default function Menupage({ navigation, route }){
                     {((count>0)?
                         <Selected listItem={listItem} />
                     :
-                        <Coming_soon />
+                        <Coming_soon customText={"Please Select A Meal From Home Page!"} />
                     )}
                 </View>
                 <View style={MenuStyle.recommended}>
                     <Text style={MenuStyle.recommendedTitle}>
                         Recommended sides
                     </Text>
-                    <Coming_soon />
+                    <Coming_soon customText={"Nothing To See Here!!"} />
                 </View>
             </ScrollView>
         </View>
