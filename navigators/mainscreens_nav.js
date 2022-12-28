@@ -26,8 +26,7 @@ export default function MainscreensNav() {
                         tabBarIcon: ({ focused }) => (<MaterialIcons name="menu-book" size={24} color={(focused) ? '#FDC500' : '#000000'} />)
                     }}
                 />
-                    {/* {(props)=><Menupage {...props} />}
-                </Tab.Screen> */}
+                
                 <Tab.Screen
                     name="Favourites"
                     component={FavouritePage}

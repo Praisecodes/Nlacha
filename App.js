@@ -1,28 +1,25 @@
 import { useFonts } from "expo-font";
 import OnboardNav from './navigators/onboard_nav';
 import Auth_Main from "./navigators/auth_main";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
-  // const StoreValue = async () => {
-  //   try {
-  //     await AsyncStorage.setItem('some_key', 'This Key');
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  // const getValue = async () => {
-  //   try {
-      
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  // const [opened, setOpened] = useState(getValue());
   const [switchNavs, setSwitchNavs] = useState(false);
+
+  const storeDevice = async () => {
+    await AsyncStorage.setItem('opened', 'true');
+  }
+
+  useEffect(()=>{
+    (async ()=>{
+      const val = await AsyncStorage.getItem('opened');
+      if(val !== null){
+        setSwitchNavs(true);
+        console.log(val);
+      }
+    })();
+  },[]);
 
   const [loaded] = useFonts({
       Nunito: require('./assets/fonts/Nunito-Regular.ttf'),
@@ -34,9 +31,12 @@ export default function App() {
   }
 
   const SwitchNavs = async () => {
-    // await StoreValue();
-    // console.log(opened);
-    setSwitchNavs(!switchNavs);
+    try {
+      await storeDevice();
+      setSwitchNavs(!switchNavs);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

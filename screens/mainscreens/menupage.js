@@ -2,15 +2,27 @@ import { View, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { heightPercentageToDP } from "react-native-responsive-screen";
 import { ScrollView } from "react-native-gesture-handler";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../components/header";
 import Coming_soon from "../../components/coming_soon";
 import MenuStyle from "../../styles/main/menu_style";
 import Selected from "../../components/selected";
 
-export default function Menupage({navigation, route}){
-    const {listItem} = route.params;
-    const [count, setCount] = useState(Object.keys(listItem).length);
+export default function Menupage({ navigation, route }){
+    const [count, setCount] = useState(0);
+    const [listItem, setListItem] = useState({});
+
+    useEffect(()=>{
+        if(route.params){
+            setListItem(route.params.listItem);
+            setCount(Object.keys(listItem).length);
+        }
+        else{
+            console.log('Not Existing');
+            setCount(0);
+        }
+    })
+
     return (
         <View style={{height: heightPercentageToDP('100%'), backgroundColor: '#ffffff'}}>
             <ScrollView contentContainerStyle={{paddingBottom: 30}}>
