@@ -7,6 +7,7 @@ import Header from "../../components/header";
 import Coming_soon from "../../components/coming_soon";
 import MenuStyle from "../../styles/main/menu_style";
 import Selected from "../../components/selected";
+import Recommended from "../../components/recommended";
 
 export default function Menupage({ navigation, route }){
     const [count, setCount] = useState(0);
@@ -39,7 +40,11 @@ export default function Menupage({ navigation, route }){
                     <Text style={MenuStyle.recommendedTitle}>
                         Recommended sides
                     </Text>
-                    <Coming_soon customText={"Nothing To See Here!!"} />
+                    {((count > 0)?
+                        <Recommended selectedCategory={listItem.category} />
+                        :
+                        <Coming_soon customText={"Nothing To See Here!!"} />
+                    )}
                 </View>
             </ScrollView>
         </View>
